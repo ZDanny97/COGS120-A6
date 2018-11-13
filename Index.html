@@ -1,0 +1,154 @@
+<HTML LANG="es">
+<HEAD>
+  <div style="background: darkgray;">
+   <LINK REL="stylesheet" TYPE="text/css" HREF="style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <img src="Images/rowers.png" width="5%" height="5%" class="center">
+    <a href="profile.html"><img id="profile" src="" width="5%" class="right"></a>
+  <hr>
+  </div>
+</HEAD>
+<BODY >
+ <div id="container" > 
+  <div id="dayslist" style="background: lightgray;">
+    <select>
+      <option value="1">Today</option>
+    </select>
+    <hr>
+  </div>
+  <div id="topbuttons" style="background: darkgray;">
+    <div class="row">
+      <div class="column" id="weather">
+        <iframe style="position: relative; top: 20%; transform: translateY(-50%);transform: translateX(40%); margin:0 auto; display: block;" src="https://cdnres.willyweather.com/widget/loadView.html?id=97309" width="120" height="171" frameborder="0" scrolling="no"></iframe><a style="z-index: 1;margin: -20px 0 0 0;display: block;position: relative;height: 20px;text-indent: -9999em" href="https://www.willyweather.com/ca/san-diego-county/san-diego.html" rel="nofollow">San Diego weather</a>
+      </div>
+      <div class="column" id="wind">
+        <iframe style="position: relative; top: 20%; transform: translateY(-50%);transform: translateX(10%); margin:0 auto; display: block;" src="https://cdnres.willyweather.com/widget/loadView.html?id=97311" width="210" height="171" frameborder="0" scrolling="no"></iframe><a style="position: relative;display: block;text-indent: -9999em;height: 20px;z-index: 1;margin: -20px 0 0 0" href="https://www.willyweather.com/ca/san-diego-county/san-diego.html" rel="nofollow">local wind</a>
+      </div>
+      <div class="column">
+        <a href="http://portal.hdontap.com/s/embed/?stream=catamaran-ptz_eh-CUST&amp;ratio=16:9"><img style="position: relative; transform: translateX(10%); margin:0 auto; display: block; padding-top:10%;" src="Images/camera.jpg" width="40%" class="center"></a>
+      </div>
+      <div class="column" id="waves">
+        <iframe style="position: relative; top: 20% ;transform: translateX(-40%); margin:0 auto; display: block;"  src="https://cdnres.willyweather.com/widget/loadView.html?id=97312" width="120" height="171" frameborder="0" scrolling="no"></iframe><a style="position: relative;z-index: 1;margin: -20px 0 0 0;height: 20px;text-indent: -9999em;display: block" href="https://www.willyweather.com/ca/san-diego-county/san-diego.html" rel="nofollow">san diego's tides</a>
+      </div>
+    </div>
+    <hr> 
+  </div>
+  <div id="lineup-workout" style="background: lightgray; padding-top:3%">
+    <div class="middle">
+    <button type="button" id="lineup-button" style="background: gray; color: blue; margin-left:25%; font-size:170%; padding:3%;" onclick="lineup()">Lineups</button>
+    <button type="button" id="workout-button" style="background: lightgray; margin-left:6%; font-size:170%; padding:3%;" onclick="workout()">Workout</button>
+    </div>
+    <div class="container">
+      <div id="lineup-container" style="background: lightgray;">
+        <ul style="list-style: none;">
+          <li>Boat: Relentless</li>
+          <li>Oars: Green</li>
+          <li>B <input disabled="disabled" type="text" name="fname" id="lightblue"></li>
+          <li>O <input disabled="disabled" type="text" name="fname" id="red"></li>
+          <li>C <input disabled="disabled" type="text" name="fname" id="green"></li>
+          <li>8 <input disabled="disabled" type="text" name="fname" id="red"></li>
+          <li>7 <input disabled="disabled" type="text" name="fname" id="green"></li>
+          <li>6 <input disabled="disabled" type="text" name="fname" id="red"></li>
+          <li>5 <input disabled="disabled" type="text" name="fname" id="green"></li>
+          <li>4 <input disabled="disabled" type="text" name="fname" id="red"></li>
+          <li>3 <input disabled="disabled" type="text" name="fname" id="green"></li>
+          <li>2 <input disabled="disabled" type="text" name="fname" id="red"></li>
+          <li>1 <input disabled="disabled" type="text" name="fname" id="green"></li>
+        </ul>
+        <ul style="list-style: none;">
+          <li>Boat: Alcala</li>
+          <li>Oars: Red</li>
+          <li>B <input disabled="disabled" type="text" name="fname" id="lightblue"></li>
+          <li>O <input disabled="disabled" type="text" name="fname" id="red"></li>
+          <li>C <input disabled="disabled" type="text" name="fname" id="green"></li>
+          <li>8 <input disabled="disabled" type="text" name="fname" id="red"></li>
+          <li>7 <input disabled="disabled" type="text" name="fname" id="green"></li>
+          <li>6 <input disabled="disabled" type="text" name="fname" id="red"></li>
+          <li>5 <input disabled="disabled" type="text" name="fname" id="green"></li>
+          <li>4 <input disabled="disabled" type="text" name="fname" id="red"></li>
+          <li>3 <input disabled="disabled" type="text" name="fname" id="green"></li>
+          <li>2 <input disabled="disabled" type="text" name="fname" id="red"></li>
+          <li>1 <input disabled="disabled" type="text" name="fname" id="green"></li>
+        </ul>
+      </div>
+      <div id="workout-container" style="display:none; background: lightgray;">
+        <ul style="list-style: none; border:gray;">
+          <li>To East Bay</li>
+          <li>Warm-up:</li>
+          <li> 6s 4`(I`/I`/I`) reverse pick</li>
+          <li>Workout:</li>
+          <li>4x10` @20,22,24,22</li>
+        </ul>
+      </div>
+    </div>  
+  <hr>    
+  </div>
+</div>  
+</BODY>
+<FOOTER>
+  <div id="bottombuttons" style="background: darkgray;">
+    <div class="row">
+      <div class="column">
+         <a href="Index.html"><img src="Images/home.png" width="15%" class="center"><label id="bottomtext">Home</label></a>
+      </div>
+      <div class="column">
+         <a href="roster.html"><img src="Images/people.png" width="15%" class="center"><label id="bottomtext">Roster</label></a>
+      </div>
+      <div class="column">
+         <a href="pieces.html"><img src="Images/timer.png" width="15%" class="center"><label id="bottomtext">Pieces</label></a>
+      </div>
+      <div class="column">
+         <a href="calendar.html"><img src="Images/calendar.png" width="15%" class="center"><label id="bottomtext">Calendar</label></a>
+      </div>
+    </div>
+    <hr> 
+</FOOTER>
+
+<script>
+var user = window.sessionStorage.getItem('user');
+if(user != null){
+  if (user  == "Coach"){
+        document.getElementById("profile").src = "Images/C.png";
+      }
+      else{
+        document.getElementById("profile").src = "Images/profile.png";
+      }
+}
+else{
+  //window.location = "profile.html";
+  document.getElementById("profile").src = "Images/user.png";
+}
+
+function lineup() {
+    document.getElementById("lineup-button").style.color= "blue";
+    document.getElementById("lineup-button").style.background= "gray";
+    document.getElementById("lineup-container").style.display="unset";
+    document.getElementById("workout-button").style.color= "black";
+    document.getElementById("workout-button").style.background= "lightgray";
+    document.getElementById("workout-container").style.display="none";
+}
+
+function workout() {
+    document.getElementById("workout-button").style.color= "blue";
+    document.getElementById("workout-button").style.background= "gray";
+    document.getElementById("workout-container").style.display="unset";
+    document.getElementById("lineup-button").style.color= "black";
+    document.getElementById("lineup-button").style.background= "lightgray";
+    document.getElementById("lineup-container").style.display="none";
+}
+
+function weather(){
+  MyWindow=window.open('weather.html','MyWindow',resizable=0,width=50,height=50);
+  return false;
+}
+
+function wind(){
+  MyWindow=window.open('wind.html','MyWindow',resizable=0,width=50,height=50);
+  return false;
+}
+function waves(){
+  MyWindow=window.open('waves.html','MyWindow',resizable=0,width=50,height=50);
+  return false;
+}
+</script>
+</HTML>
