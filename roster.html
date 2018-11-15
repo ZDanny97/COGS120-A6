@@ -1,15 +1,94 @@
 <HTML LANG="es">
 <HEAD>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <div style="background: darkgray;">
    <LINK REL="stylesheet" TYPE="text/css" HREF="style.css">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" charset="UTF-8"/>
     <img src="Images/rowers.png" width="5%" height="5%" class="center">
     <a href="profile.html"><img id="profile" src="" width="5%" class="right"></a>
   <hr>
   </div>
 </HEAD>
 <BODY style="background: lightgray;"> 
-  <h1>ROSTER PAGE</h1>
+  <h1>Roster</h1>
+  <div id="container">
+  <ul id="roster" style="list-style: none;">
+  <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyC4yRQTqH8kprU56QhfVq0e5Yp6NXmzBrw",
+      authDomain: "b-a-b-7bbf8.firebaseapp.com",
+      databaseURL: "https://b-a-b-7bbf8.firebaseio.com",
+      projectId: "b-a-b-7bbf8",
+      storageBucket: "b-a-b-7bbf8.appspot.com",
+      messagingSenderId: "170330985238"
+    };
+    firebase.initializeApp(config);
+  
+    var Ref = firebase.database().ref().child("Tritons");
+
+      Ref.on('value',function(snapshot){
+      var rowers = snapshot.child('Rowers').val();
+
+       for (var i = 1; i <= rowers; i++) {
+    
+          var str1 = '#li';
+          var str2 = i.toString();
+          var id= str1.concat(str2)
+          var firebaseRef = firebase.database().ref().child("Tritons").child("Teammates").child(i);
+
+
+          firebaseRef.on('value',function(snapshot){
+
+             var name = snapshot.child('name').val();
+             var color = snapshot.child('color').val();
+             var height = snapshot.child('height').val();
+             var weight = snapshot.child('weight').val();
+             var k2 = snapshot.child('k2').val();
+             var rank = snapshot.child('rank').val();
+             var year = snapshot.child('year').val();
+
+             var node = document.createTextNode(name + " " + year + "/" + height + "/ "+ weight);
+             var para = document.createElement("li");
+             para.setAttribute("id", id);
+             var lf=document.createElement('br');
+             para.appendChild(lf);    
+             para.appendChild(node);
+             var element = document.getElementById("roster");
+             element.appendChild(para); 
+
+             
+             if(color == "lb"){
+                document.getElementById(id).style.background= "lightblue";
+             }
+             else{
+              if(color == "b"){
+                 document.getElementById(id).style.background= "blue";
+              }
+              else{
+                if(color == "g"){
+                   document.getElementById(id).style.background= "lightgreen";
+                }
+                else{
+                   document.getElementById(id).style.background= "red";
+                }
+              }
+             }
+
+          });
+        };
+    });
+    
+</script>  
+</div>
+<div id="buttons">
+
+<button onclick="add()">Add</button>
+
+<button>Remove</button>
+
+</div>
 </BODY>
 <FOOTER>
   <div id="bottombuttons" style="background: darkgray;">
@@ -29,4 +108,11 @@
     </div>
     <hr> 
 </FOOTER>
+
+<script>
+  function add(){
+  MyWindow=window.open('add-popup.html','MyWindow');
+  return false;
+}
+</script>
 </HTML>

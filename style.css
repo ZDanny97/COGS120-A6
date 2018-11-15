@@ -57,6 +57,16 @@
   margin: 0 0 4px 0
 }
 
+#roster li{
+  margin: 0 -60% 5% 0;
+  text-align: center;
+  font-size: 130%;
+}
+
+h1{
+    font-size: 200%;
+}
+
 html, body{
   padding: 0;
   margin: 0;
@@ -70,7 +80,9 @@ option{
 ul {
     display: inline-block;
     *display: inline;
-    zoom: 1
+    zoom: 1;
+    margin: 0 auto; 
+    width: 50%; 
 }
 
 * {

@@ -11,9 +11,6 @@
 <BODY >
  <div id="container" > 
   <div id="dayslist" style="background: lightgray;">
-    <select>
-      <option value="1">Today</option>
-    </select>
     <hr>
   </div>
   <div id="topbuttons" style="background: darkgray;">
@@ -41,6 +38,7 @@
     <div class="container">
       <div id="lineup-container" style="background: lightgray;">
         <ul style="list-style: none;">
+          <li></li>
           <li>Boat: Relentless</li>
           <li>Oars: Green</li>
           <li>B <input disabled="disabled" type="text" name="fname" id="lightblue"></li>
@@ -103,7 +101,6 @@
     </div>
     <hr> 
 </FOOTER>
-
 <script>
 var user = window.sessionStorage.getItem('user');
 if(user != null){
