@@ -58,18 +58,11 @@ function add(){
     var r = window.sessionStorage.getItem('n');
 
     NRef.on('value',function(snapshot){
+
       var rowers = snapshot.child('Rowers/count').val();
-      var n = rowers + 1;
+      var n = rowers;
 
       var FRef = firebase.database().ref().child("Tritons").child("Teammates/"+n);
-
-      //var Nref=firebase.database().ref().child("Tritons").child("Rowers");
-
-      /*Nref.set({
-
-          count:n
-
-      });*/
 
       FRef.set({
 
@@ -81,6 +74,13 @@ function add(){
           rank: document.getElementById('rankT').value,
           color: $('#color').val()
       });
+
+    });
+
+    var Nref = firebase.database().ref('Tritons/Rowers/count');
+    var rowers = 0;
+    Nref.transaction(function(rowers) {
+      return (rowers || 0) + 1;
     });
 
   document.getElementById('finish').innerHTML="new rower added to the team!";

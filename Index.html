@@ -52,8 +52,10 @@
           <li>3 <input disabled="disabled" type="text" name="fname" id="green"></li>
           <li>2 <input disabled="disabled" type="text" name="fname" id="red"></li>
           <li>1 <input disabled="disabled" type="text" name="fname" id="green"></li>
+          <li><button id="edit1" style="display:none;">Edit</button></li>
         </ul>
         <ul style="list-style: none;">
+          <li></li>
           <li>Boat: Alcala</li>
           <li>Oars: Red</li>
           <li>B <input disabled="disabled" type="text" name="fname" id="lightblue"></li>
@@ -67,6 +69,7 @@
           <li>3 <input disabled="disabled" type="text" name="fname" id="green"></li>
           <li>2 <input disabled="disabled" type="text" name="fname" id="red"></li>
           <li>1 <input disabled="disabled" type="text" name="fname" id="green"></li>
+          <li><button id="edit2" style="display:none;">Edit</button></li>
         </ul>
       </div>
       <div id="workout-container" style="display:none; background: lightgray;">
@@ -76,6 +79,7 @@
           <li> 6s 4`(I`/I`/I`) reverse pick</li>
           <li>Workout:</li>
           <li>4x10` @20,22,24,22</li>
+          <li><button id="edit3" style="display:none;">Edit</button></li>
         </ul>
       </div>
     </div>  
@@ -106,6 +110,9 @@ var user = window.sessionStorage.getItem('user');
 if(user != null){
   if (user  == "Coach"){
         document.getElementById("profile").src = "Images/C.png";
+        document.getElementById("edit1").style.display="unset";
+        document.getElementById("edit2").style.display="unset";
+        document.getElementById("edit3").style.display="unset";
       }
       else{
         document.getElementById("profile").src = "Images/profile.png";

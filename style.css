@@ -60,7 +60,7 @@
 #roster li{
   margin: 0 -60% 5% 0;
   text-align: center;
-  font-size: 130%;
+  font-size: 120%;
 }
 
 h1{
@@ -77,6 +77,19 @@ option{
   font-size: 60%;
 }
 
+
+#lineup-container ul {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    margin: 0 auto; 
+    width: 100%; 
+}
+
+#roster li {
+    font-size: 200%;
+}
+
 ul {
     display: inline-block;
     *display: inline;
@@ -84,6 +97,7 @@ ul {
     margin: 0 auto; 
     width: 50%; 
 }
+
 
 * {
     box-sizing: border-box;

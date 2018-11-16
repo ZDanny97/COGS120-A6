@@ -12,7 +12,11 @@
 <BODY style="background: lightgray;"> 
   <h1>Roster</h1>
   <div id="container">
+  <div id="buttons">
+  <button id="add" onclick="add()">Add</button>
+  </div>
   <ul id="roster" style="list-style: none;">
+  </ul>
   <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
   <script>
     // Initialize Firebase
@@ -25,11 +29,27 @@
       messagingSenderId: "170330985238"
     };
     firebase.initializeApp(config);
-  
+    
+    var user = window.sessionStorage.getItem('user');
+
+    if(user != null){
+      if (user  == "Coach"){
+            document.getElementById("profile").src = "Images/C.png";
+          }
+          else{
+            document.getElementById("profile").src = "Images/profile.png";
+            document.getElementById("add").style.display="none";
+          }
+    }
+    else{
+      document.getElementById("profile").src = "Images/user.png";
+      document.getElementById("add").style.display="none";
+    }
+
     var Ref = firebase.database().ref().child("Tritons");
 
       Ref.on('value',function(snapshot){
-      var rowers = snapshot.child('Rowers').val();
+      var rowers = snapshot.child('Rowers/count').val();
 
        for (var i = 1; i <= rowers; i++) {
     
@@ -49,12 +69,28 @@
              var rank = snapshot.child('rank').val();
              var year = snapshot.child('year').val();
 
-             var node = document.createTextNode(name + " " + year + "/" + height + "/ "+ weight);
+             var node = document.createTextNode(name + " " + year + "/" + height + "/ "+ weight+" ");
              var para = document.createElement("li");
-             para.setAttribute("id", id);
              var lf=document.createElement('br');
              para.appendChild(lf);    
+             para.setAttribute("id", id);
              para.appendChild(node);
+             if(user  == "Coach"){
+             var button = document.createElement("button");
+             button.setAttribute("style","height:5%;width:5%;");
+             button.innerHTML = '<img src="Images/erase.png" style="width:200%; position: relative; transform: translateX(-30%); margin:0 auto; display: block;"/>';
+             button.onclick = function erase(){
+                                var FRef = firebase.database().ref().child("Tritons").child("Teammates").child(i).remove();
+
+                                var Nref = firebase.database().ref('Tritons/Rowers/count');
+                                var rowers = 0;
+                                Nref.transaction(function(rowers) {
+                                  return (rowers || 0) - 1;
+                                });
+                                location.reload();
+                              }
+             para.appendChild(button);
+             }
              var element = document.getElementById("roster");
              element.appendChild(para); 
 
@@ -82,13 +118,6 @@
     
 </script>  
 </div>
-<div id="buttons">
-
-<button onclick="add()">Add</button>
-
-<button>Remove</button>
-
-</div>
 </BODY>
 <FOOTER>
   <div id="bottombuttons" style="background: darkgray;">
@@ -112,7 +141,6 @@
 <script>
   function add(){
   MyWindow=window.open('add-popup.html','MyWindow');
-  return false;
-}
+  }
 </script>
 </HTML>
