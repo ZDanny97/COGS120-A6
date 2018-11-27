@@ -79,16 +79,8 @@
              var button = document.createElement("button");
              button.setAttribute("style","height:5%;width:5%;");
              button.innerHTML = '<img src="Images/erase.png" style="width:200%; position: relative; transform: translateX(-30%); margin:0 auto; display: block;"/>';
-             button.onclick = function erase(){
-                                var FRef = firebase.database().ref().child("Tritons").child("Teammates").child(i).remove();
-
-                                var Nref = firebase.database().ref('Tritons/Rowers/count');
-                                var rowers = 0;
-                                Nref.transaction(function(rowers) {
-                                  return (rowers || 0) - 1;
-                                });
-                                location.reload();
-                              }
+             button.value=i;
+             button.setAttribute("onClick","erase(this.value)")
              para.appendChild(button);
              }
              var element = document.getElementById("roster");
@@ -141,6 +133,17 @@
 <script>
   function add(){
   MyWindow=window.open('add-popup.html','MyWindow');
+  }
+  function erase(val)
+  {
+    var FRef = firebase.database().ref().child("Tritons").child("Teammates").child(val).remove();
+
+    var Nref = firebase.database().ref('Tritons/Rowers/count');
+    var rowers = 0;
+    Nref.transaction(function(rowers) {
+      return (rowers || 0) - 1;
+    });
+    location.reload();
   }
 </script>
 </HTML>
